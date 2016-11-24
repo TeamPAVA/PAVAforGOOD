@@ -8,7 +8,7 @@ package core;
  * @author aolives
  *
  */
-public class UserAccount {
+public abstract class UserAccount {
     
 	/** The email address. */
 	private String emailAddress;
@@ -185,12 +185,16 @@ public class UserAccount {
 	}
 
 	/**
-	 * Update income.
+	 * Update income. Separated out, on a hunch.
 	 *
 	 * @param newIncome the new income
 	 */
 	public void updateIncome(final int newIncome) {
 		setAnnualIncome(newIncome);
 	}
+	
+	
+	
+	public abstract void seeFamilyUpdate();
 	
 }
