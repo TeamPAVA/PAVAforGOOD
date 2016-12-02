@@ -1,5 +1,9 @@
 package core;
 
+import java.awt.EventQueue;
+
+import GUI.Frame;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class PavaMain.
@@ -33,6 +37,14 @@ public final class PavaMain {
 	      controller.setUserName("John");
 
 	      controller.updateView();
+	      
+
+		EventQueue.invokeLater(() -> {
+            Frame ex = new Frame();
+            ex.setVisible(true);
+        });
+
+
 	}
 	
 	private static User retrieveUserFromDatabase() {
