@@ -19,27 +19,27 @@ public final class PavaMain {
 	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
-	      //fetch student record based on his roll no from the database
-	      UserAccount model  = retrieve___FromDatabase();
+	      //fetch user record from the "database"
+	      User model  = retrieveUserFromDatabase();
 
-	      //Create a view : to write student details on console
-	      LoginView view = new LoginView();
+	      //Create a view : to write User details on console
+	      UserView view = new UserView();
 
-	      StudentController controller = new StudentController(model, view);
+	      UserController controller = new UserController(model, view);
 
 	      controller.updateView();
 
 	      //update model data
-	      controller.setStudentName("John");
+	      controller.setUserName("John");
 
 	      controller.updateView();
 	}
 	
-	   private static Student retrieveStudentFromDatabase(){
-		      Student student = new Student();
-		      student.setName("Robert");
-		      student.setRollNo("10");
-		      return student;
-		   }
+	private static User retrieveUserFromDatabase() {
+		User user = new User();
+		user.setName("Robert");
+		user.setAnnualIncome(35000);
+		return user;
+	}
 
 }

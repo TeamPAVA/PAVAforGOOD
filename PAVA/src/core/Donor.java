@@ -1,6 +1,6 @@
 package core;
 
-public class DonorAccount extends UserAccount {
+public class Donor extends User {
 	private int totalDonatedtoDate = 0;
 	
 	// This needs cardNumber, expMonth, expYear, cvc, cardholderName, address
@@ -18,7 +18,6 @@ public class DonorAccount extends UserAccount {
 	}
 	public void cancelDonationSchedule() {
 	}
-	@Override
 	public void seeFamilyUpdate() {
 		// TODO Auto-generated method stub
 		
