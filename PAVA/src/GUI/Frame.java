@@ -78,19 +78,23 @@ public class Frame extends JFrame{
 		//create actions here. turn into method?
 		
 		login.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				try {
-			        Scanner scanner = new Scanner(users);
-			        scanner.useDelimiter(",");
-			        while(scanner.hasNext()) {
-			        	if (scanner.next() == username.getText()) {
-			        		
-			        	}
-			        }
-			        scanner.close();
-				} catch (FileNotFoundException e1) {
-					//if cant find file, do this
-				}
+				Scanner fileScan;
+			    try {
+			    	fileScan = new Scanner(new File("test.csv"));
+			    	fileScan.useDelimiter(",");
+			    	while(fileScan.hasNextLine()){
+		               String username = fileScan.next();
+		               String p = fileScan.next();
+		               if (username.equals(usernameWord.getText()) && p.equals(password.getText())) {
+		                               
+		               }
+		            }
+			    } catch (FileNotFoundException e1) {
+			   
+			     e1.printStackTrace();
+			   }
 
 			}
 			
