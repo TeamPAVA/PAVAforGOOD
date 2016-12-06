@@ -36,9 +36,6 @@ public class Frame extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         createFirstScreen();
         this.pack();
-        
-
-        
 	}
 	
 	private void createFirstScreen() {
