@@ -3,7 +3,6 @@ package core;
 import java.awt.EventQueue;
 
 import GUI.Frame;
-import GUI.TestFrame;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -41,7 +40,7 @@ public final class PavaMain {
 	      
 
 		EventQueue.invokeLater(() -> {
-            TestFrame ex = new TestFrame();
+            Frame ex = new Frame();
             ex.setVisible(true);
         });
 
