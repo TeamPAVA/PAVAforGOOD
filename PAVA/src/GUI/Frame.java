@@ -82,15 +82,22 @@ public class Frame extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				Scanner fileScan;
 			    try {
-			    	fileScan = new Scanner(new File("test.csv"));
+			    	fileScan = new Scanner(users);
 			    	fileScan.useDelimiter(",");
 			    	while(fileScan.hasNextLine()){
-		               String username = fileScan.next();
-		               String p = fileScan.next();
-		               if (username.equals(usernameWord.getText()) && p.equals(password.getText())) {
+			    		String currentLine = "";
+			    		currentLine = fileScan.nextLine();
+			    		Scanner second = new Scanner(System.in);
+			    		
+			    		
+		                String username = currentLine.next();
+		                String p = currentLine.next();
+		                if (username.equals(usernameWord.getText()) && p.equals(password.getText())) {
+		            	   Home myHome = new Home();
+		            	   add(myHome, BorderLayout.CENTER);
 		                               
-		               }
-		            }
+		                }
+		            } 
 			    } catch (FileNotFoundException e1) {
 			   
 			     e1.printStackTrace();
