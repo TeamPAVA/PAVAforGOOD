@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -28,16 +29,13 @@ public class Frame extends JFrame{
 	public Frame() {
 		super();
 		setTitle("PAVAP");
-		users = new File("users.csv");
+		users = new File("userDatabase.csv");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		//createMenuBar();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         createFirstScreen();
         this.pack();
-        
-
-        
 	}
 	
 	private void createFirstScreen() {
@@ -77,8 +75,24 @@ public class Frame extends JFrame{
 		//create actions here. turn into method?
 		
 		login.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				
+				Scanner fileScan;
+			    try {
+			    	fileScan = new Scanner(new File("test.csv"));
+			    	fileScan.useDelimiter(",");
+			    	while(fileScan.hasNextLine()){
+		               String username = fileScan.next();
+		               String p = fileScan.next();
+		               if (username.equals(usernameWord.getText()) && p.equals(password.getText())) {
+		                               
+		               }
+		            }
+			    } catch (FileNotFoundException e1) {
+			   
+			     e1.printStackTrace();
+			   }
+
 			}
 			
 		});
@@ -96,7 +110,7 @@ public class Frame extends JFrame{
 //					sb.append('\n');
 //				} catch (FileNotFoundException e1) {
 //					//if cant find file, do this
-//				} 
+//				}
 			}
 			
 		});
