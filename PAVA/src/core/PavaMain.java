@@ -2,7 +2,8 @@ package core;
 
 import java.awt.EventQueue;
 
-import GUI.Frame;
+import GUI.LoginFrame;
+import GUI.TestFrame;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -40,7 +41,8 @@ public final class PavaMain {
 	      
 
 		EventQueue.invokeLater(() -> {
-            Frame ex = new Frame();
+			LoginFrame ex = new LoginFrame();
+            //TestFrame ex = new TestFrame();
             ex.setVisible(true);
         });
 
