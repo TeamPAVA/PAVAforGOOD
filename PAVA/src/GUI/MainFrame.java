@@ -14,7 +14,7 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		setTitle("PAVAP");
 		setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        HomePanel myP = new HomePanel();
+        DonorPanel myP = new DonorPanel();
         add(myP);
         
         if(userTypeNum == 0) {
@@ -24,13 +24,14 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
         } else if (userTypeNum == 2) {
         	//recipient
         }
-        
+        //verena work on option panel for recipients
         
         
         
         
         
         pack();
+        setLocationRelativeTo(null);
 	}
 
 

@@ -72,7 +72,7 @@ public class LoginFrame extends JFrame {
         } catch (IOException e){
         	
         }
-       
+        setLocationRelativeTo(null);
 	}
 }
 	
@@ -148,7 +148,7 @@ public class LoginFrame extends JFrame {
 			        while((database = fileScanner.readLine()) != null){
 			           String[] users = database.split(",");
 			        	   if (users[0].equals(username.getText()) && users[1].equals(password.getText())) {
-			        		   MainFrame homeFrame = new MainFrame("2"); // Create a new JFrame for all panel changes starting at home not login.
+			        		   MainFrame homeFrame = new MainFrame(users[2]); // Create a new JFrame for all panel changes starting at home not login.
 			        		   setSize(700,700);
 			        		   homeFrame.setVisible(true);
 			        		   myMainFrame.setVisible(false); //dispose of the login frame because we no longer need it, just make a new one.
@@ -166,6 +166,8 @@ public class LoginFrame extends JFrame {
 		
 		signup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SignupPanel mySignupPanel = new SignupPanel(users);
+				mySignupPanel.setVisible(true);
 //				try {
 //					
 //					PrintWriter w = new PrintWriter(users);
@@ -182,15 +184,19 @@ public class LoginFrame extends JFrame {
 		});
 		
 		about.addActionListener(new ActionListener() {
-
-
-
-
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-			
-		});
+		    public void actionPerformed(ActionEvent e) {
+		      JOptionPane.showMessageDialog(null,"PAVAP is an absolute dream team. I first met PAVAP, or THE PAVAP as I call them, "
+		       + '\n' + "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, "
+		        + '\n' + "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
+		       + '\n' + "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
+		       + '\n' + "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
+		       + '\n' + "believes in clean energy and has contributed miles of code to Tesla’s autopilot "
+		       + '\n' + "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
+		       + '\n' + "Musk*, but they don’t like talking about that much... Long story short Team PAVAP is no "
+		       + '\n' + "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
+		       + '\n' + "are without a doubt, looking for PAVAP.", "About PAVAP", JOptionPane.PLAIN_MESSAGE);
+		    }
+		   });
 		
 	}
 	
