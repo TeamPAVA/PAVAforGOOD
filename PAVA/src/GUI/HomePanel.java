@@ -48,19 +48,19 @@ public class HomePanel extends JPanel {
 		public void loadIn() {
 			Boolean lineFound = false;
 			Scanner fileScanner;
+			Scanner lineScanner;
 		    try {
 		    	fileScanner = new Scanner(new File("src/famStory/table.csv"));
-		    	fileScanner.useDelimiter(",");
-		    	while(fileScanner.hasNext() && lineFound == false){
-		    		String tempVar = fileScanner.next();
+		    	while (fileScanner.hasNextLine() && !lineFound) {
+		    		lineScanner = new Scanner(fileScanner.nextLine());
+		    		lineScanner.useDelimiter(",");
+		    		String tempVar = lineScanner.next();
 		    		if (tempVar.equals(String.valueOf(userStoryID))) {
 		    			lineFound = true;
+			    		title = lineScanner.next();
+			    		story = lineScanner.next();
+			    		pathToImage = lineScanner.next();
 		    		}
-		    	}
-		    	if (lineFound) {
-		    		title = fileScanner.next();
-		    		story = fileScanner.next();
-		    		pathToImage = fileScanner.next();
 		    	}
 		    } catch (FileNotFoundException e1) {
 		     e1.printStackTrace();
