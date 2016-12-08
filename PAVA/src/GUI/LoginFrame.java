@@ -134,7 +134,7 @@ public class LoginFrame extends JFrame {
 		add(about);
 		
 		//////////////////////////////////////////////////////
-		//create actions here. turn into method?
+		//create actions here. 
 		
 		login.addActionListener(new ActionListener() {
 

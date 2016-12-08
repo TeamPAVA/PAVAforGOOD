@@ -19,7 +19,8 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 	private JMenuBar menuBar;
 	private HomePanel homePanel;
 	private DonorPanel donorPanel;
-	//private OptionsPanel optionsPanel;
+	private RecipientOptionsPanel recOptionsPanel;
+	//private OptionsPanel optionsPanel; //this is split between recipient and donor, correct?
 	//private AboutPanel aboutPanel;
 	private JPanel current1;
 	public MainFrame(String userType) {
@@ -38,20 +39,21 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
         //aboutPanel = new AboutPanel();
         donorPanel = new DonorPanel();
         homePanel = new HomePanel();
+        recOptionsPanel = new RecipientOptionsPanel();
         add(homePanel);
         current1 = homePanel;
 
         menuBar = new JMenuBar();
-        setupDonor();
+       
         
 
         
         if(userTypeNum == 0) {
         	//setupAdmin();
         } else if (userTypeNum == 1) {
-        	//setupDonor();
+        	 setupDonor();
         } else if (userTypeNum == 2) {
-        	//setupRec();
+        	setupRec();
         }
 
         //verena work on option panel for recipients
@@ -73,6 +75,17 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 	 */
 	private void setInvis() {
 		this.setVisible(false);
+	}
+	/**
+	 * Helper method to set the recipient options panel
+	 * 
+	 */
+	private void addRecipientOptions() {
+		this.remove(current1);
+		this.add(recOptionsPanel);
+		current1 = recOptionsPanel;
+		this.revalidate();
+		this.repaint();
 	}
 	/**
 	 * Helper method to set the donor panel
@@ -100,13 +113,14 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 	 * Helper method to set the options panel
 	 * @author Patrick Stevens
 	 */
-	private void addOptions() {
-		this.remove(current1);
-		//this.add(optionsPanel);
-		//current1 = optionsPanel;
-		this.revalidate();
-		this.repaint();
-	}
+	
+//	private void addDonorOptions() {
+//		this.remove(current1);
+//		//this.add(donorOptionsPanel);
+//		//current1 = donorOptionsPanel;
+//		this.revalidate();
+//		this.repaint();
+//	}
 	/**
 	 * Helper method to set the about panel
 	 * @author Patrick Stevens
@@ -145,7 +159,7 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		       options.addActionListener(new ActionListener() {
 		    	   @Override
 		    	   public void actionPerformed(ActionEvent e) {
-		        		//addOptions();
+		    		  
 		        	}
 		        	
 		        	
@@ -311,7 +325,9 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 
 
 			public void actionPerformed(ActionEvent e) {
-		        		//open optionsPanel
+				
+        				addRecipientOptions();
+        	
 		        	}
 		        	
 		        	
