@@ -2,65 +2,36 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+/**
+ * The Panel class for the Donor Panel
+ * @author Patrick Stevens
+ */
 public class DonorPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4761523114634863561L;
 
 	public DonorPanel () {
 		super();
-		setSize(400,185);
 		setBackground(Color.GRAY);
-
-		//menuBar();
-		
 		setUp();
-		
 	}
 
-	private void menuBar() {
-		JMenuBar menubar = new JMenuBar();
-        JButton login = new JButton("Login");
-        JButton about = new JButton("About");
-        
-        menubar.add(login);
-        menubar.add(about);
-        login.setMnemonic(KeyEvent.VK_L);
-
-        menubar.add(Box.createHorizontalGlue());
-        login.setMnemonic(KeyEvent.VK_E);
-        login.setToolTipText("Exit application");
- 
-        
-         login.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               String text = "";
-    
-            }
-         });
-
-        menubar.add(login);
-
-        add(menubar,BorderLayout.NORTH);
-        setVisible(true);
-		
-	}
 
 	private void setUp() {
 		JPanel initial = new JPanel();
@@ -72,17 +43,14 @@ public class DonorPanel extends JPanel {
 		JPanel center = new JPanel();
 		JPanel south = new JPanel();
 		
-		
-		
-		
 		JLabel helpText = new JLabel("How much can you help today?");
 		
 		Font labelFont = helpText.getFont();
-		helpText.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+		helpText.setFont(new Font(labelFont.getName(), Font.PLAIN, 30));
 		
 		
 		JTextField donateAmount = new JTextField("$", 10);
-		donateAmount.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
+		donateAmount.setFont(new Font(labelFont.getName(), Font.PLAIN, 40));
 
 		JButton newCard = new JButton("New Card");
 		newCard.setFont(new Font(labelFont.getName(), Font.PLAIN, 10));
@@ -144,8 +112,6 @@ public class DonorPanel extends JPanel {
             }
         });
 		
-		
-		
 		north.add(helpText, BorderLayout.NORTH);	
 		
 		center.add(donateAmount, BorderLayout.WEST);
@@ -159,8 +125,10 @@ public class DonorPanel extends JPanel {
 		initial.add(south, BorderLayout.SOUTH);
 
 		initial2.add(initial, BorderLayout.NORTH);
-
 		
+		initial.setPreferredSize(new Dimension(475,200));
+
+		setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
 		add(initial2,BorderLayout.CENTER);
 	}
 }
