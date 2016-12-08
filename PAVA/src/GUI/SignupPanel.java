@@ -24,7 +24,7 @@ public class SignupPanel extends JFrame {
 		setSize(400,550);
 		try {
         	setIconImage(ImageIO.read(new File("p.png"))); // http://wiro.donweb-homeip.net/p-2/
-        } catch (IOException e){
+        } catch (IOException e) {
         	
         }
 		setLayout(new GridLayout(0,2));

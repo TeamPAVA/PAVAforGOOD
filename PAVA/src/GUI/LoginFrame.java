@@ -92,7 +92,7 @@ public class LoginFrame extends JFrame {
 		
 		try {
         	myImage = ImageIO.read(new File("login.jpg")); // http://www.mobileswall.com/tag/abstract/page/3/
-        } catch (IOException e){
+        } catch (IOException e) {
         	//blow up the program.
         }
 		JLabel usernameWord = new JLabel("Username");
