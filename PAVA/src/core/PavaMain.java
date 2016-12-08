@@ -41,7 +41,6 @@ public final class PavaMain {
 
 		EventQueue.invokeLater(() -> {
 			LoginFrame ex = new LoginFrame();
-            //TestFrame ex = new TestFrame();
             ex.setVisible(true);
         });
 
