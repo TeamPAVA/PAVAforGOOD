@@ -3,15 +3,24 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RecipientOptionsPanel extends JPanel {
 	public RecipientOptionsPanel () {
 		super();
 		setBackground(Color.GRAY);
-		JPanel initial = new JPanel();
-		JPanel initial2 = new JPanel();
-		initial.setLayout(new BorderLayout());
+		
+		JLabel currentRemBal = new JLabel("Current Remaining Balance:");
+		JLabel amtToDate = new JLabel("Total Amount Recieved To Date:");
+		JLabel amtThisYear = new JLabel("Total Amount Recieved This Year:");
+		
+		this.add(currentRemBal);
+		this.add(amtToDate);
+		this.add(amtThisYear);
+		
+		
+		
 		
 	}
 
