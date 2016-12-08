@@ -29,10 +29,10 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		setTitle("PAVAP");
 		setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-<<<<<<< HEAD
+
         DonorPanel myP = new DonorPanel();
         add(myP);
-=======
+
         
         //optionsPanel = new OptionsPanel();
         //aboutPanel = new AboutPanel();
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
         menuBar = new JMenuBar();
         setupDonor();
         
->>>>>>> branch 'master' of https://github.com/TeamPAVA/PAVAforGOOD.git
+
         
         if(userTypeNum == 0) {
         	//setupAdmin();
@@ -53,13 +53,12 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
         } else if (userTypeNum == 2) {
         	//setupRec();
         }
-<<<<<<< HEAD
+
         //verena work on option panel for recipients
-=======
+
         this.setJMenuBar(menuBar);
         
-        
->>>>>>> branch 'master' of https://github.com/TeamPAVA/PAVAforGOOD.git
+
         
         
         
