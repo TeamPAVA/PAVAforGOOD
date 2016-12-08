@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,6 +47,7 @@ public class HomePanel extends JPanel {
 			loadIn();
 			setUp();
 		}
+		
 		public void loadIn() {
 			Boolean lineFound = false;
 			Scanner fileScanner;
@@ -67,11 +70,16 @@ public class HomePanel extends JPanel {
 		   }
 		}
 		private void setUp() {
-			
+			Font titleFont = new Font("Arial", Font.BOLD,20);
+			Font storyFont = new Font("Helvetica", Font.BOLD,14);
 			JLabel famPic = new JLabel( new ImageIcon(pathToImage));
 			this.add(famPic, BorderLayout.NORTH);
-			this.add(new JLabel(title), BorderLayout.CENTER);
-			this.add(new JLabel("<html><body style='width: 250 px'>" + story), BorderLayout.SOUTH);
+			JLabel titleLabel = new JLabel(title.toUpperCase());
+			JLabel storyLabel = new JLabel("<html><body style='width: 250 px'>" + story);
+			titleLabel.setFont(titleFont);
+			storyLabel.setFont(storyFont);
+			this.add(titleLabel, BorderLayout.CENTER);
+			this.add(storyLabel, BorderLayout.SOUTH);
 			
 		}
 
@@ -117,9 +125,15 @@ public class HomePanel extends JPanel {
 	}
 	
 	public void setUp() {
+		
+		
+		
 		FamilyUpdatePanel west = new FamilyUpdatePanel(1);
 		FamilyUpdatePanel center = new FamilyUpdatePanel(2);
 		FamilyUpdatePanel east = new FamilyUpdatePanel(3);
+		west.setBorder(BorderFactory.createEmptyBorder(100,25,170,0));
+		center.setBorder(BorderFactory.createEmptyBorder(100,0,170,0));
+		east.setBorder(BorderFactory.createEmptyBorder(100,0,170,25));
 		this.add(east, BorderLayout.EAST);
 		this.add(west, BorderLayout.WEST);
 		this.add(center, BorderLayout.CENTER);
