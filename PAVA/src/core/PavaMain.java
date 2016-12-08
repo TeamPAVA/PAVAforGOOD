@@ -3,7 +3,6 @@ package core;
 import java.awt.EventQueue;
 
 import GUI.LoginFrame;
-import GUI.TestFrame;
 
 // TODO: Auto-generated Javadoc
 /**
