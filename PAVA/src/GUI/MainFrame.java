@@ -246,9 +246,9 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		        	
 		        	
 		        });
+		       
+		       
 		       home.addActionListener(new ActionListener() {
-
-
 			public void actionPerformed(ActionEvent e) {
 		        		//open home
 		        	}
@@ -309,16 +309,17 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 					}
 		        	
 		        });
+		        
+		        
 		       home.addActionListener(new ActionListener() {
-
-
 			public void actionPerformed(ActionEvent e) {
-		        		//open home
+		        		addHome();
 		        	}
 		        	
 		        	
 		        });
-		   	        	
+		       
+		       
 		        
 		       about.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
