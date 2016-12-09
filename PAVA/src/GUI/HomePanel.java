@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 
 public class HomePanel extends JPanel {
 	
-	
 	/**
 	 * 
 	 */
@@ -38,17 +37,21 @@ public class HomePanel extends JPanel {
 		private String story;
 		private String pathToImage;
 		private ImageIcon image;
+		
 		public FamilyUpdatePanel(int id) {
 			super();
 			userStoryID = id;
 			setBackground(Color.GRAY);
 			setLayout(new BorderLayout());
 			
-			loadIn();
-			setUp();
+			if (loadIn()) {
+				setUp();
+			}
+			//loadIn();
+			//setUp();
 		}
 		
-		public void loadIn() {
+		public Boolean loadIn() {
 			Boolean lineFound = false;
 			Scanner fileScanner;
 			Scanner lineScanner;
@@ -68,21 +71,24 @@ public class HomePanel extends JPanel {
 		    } catch (FileNotFoundException e1) {
 		     e1.printStackTrace();
 		   }
+		return lineFound;
 		}
+		
 		private void setUp() {
 			Font titleFont = new Font("Arial", Font.BOLD,20);
 			Font storyFont = new Font("Helvetica", Font.BOLD,14);
-			JLabel famPic = new JLabel( new ImageIcon(pathToImage));
-			this.add(famPic, BorderLayout.NORTH);
+			JLabel famPic = new JLabel(new ImageIcon(pathToImage));
+			
 			JLabel titleLabel = new JLabel(title.toUpperCase());
 			JLabel storyLabel = new JLabel("<html><body style='width: 250 px'>" + story);
+			
 			titleLabel.setFont(titleFont);
 			storyLabel.setFont(storyFont);
+			
+			this.add(famPic, BorderLayout.NORTH);
 			this.add(titleLabel, BorderLayout.CENTER);
 			this.add(storyLabel, BorderLayout.SOUTH);
-			
 		}
-
 	}
 
 	public HomePanel() {
@@ -90,43 +96,11 @@ public class HomePanel extends JPanel {
 		this.setPreferredSize(new Dimension(1024,768));
 		setBackground(Color.GRAY);
 		setLayout(new BorderLayout());
-
-		//menuBar();
 		
 		setUp();
 	}
-	
-	private void menuBar() {
-		JMenuBar menubar = new JMenuBar();
-        JButton login = new JButton("Login");
-        JButton about = new JButton("About");
-        
-        menubar.add(login);
-        menubar.add(about);
-        login.setMnemonic(KeyEvent.VK_L);
 
-        menubar.add(Box.createHorizontalGlue());
-        login.setMnemonic(KeyEvent.VK_E);
-        login.setToolTipText("Exit application");
- 
-        
-         login.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               String text = "";
-    
-            }
-         });
-
-        menubar.add(login);
-
-        add(menubar,BorderLayout.NORTH);
-        setVisible(true);
-		
-	}
-	
 	public void setUp() {
-		
-		
 		
 		FamilyUpdatePanel west = new FamilyUpdatePanel(1);
 		FamilyUpdatePanel center = new FamilyUpdatePanel(2);
@@ -134,9 +108,9 @@ public class HomePanel extends JPanel {
 		west.setBorder(BorderFactory.createEmptyBorder(100,25,170,0));
 		center.setBorder(BorderFactory.createEmptyBorder(100,0,170,0));
 		east.setBorder(BorderFactory.createEmptyBorder(100,0,170,25));
-		this.add(east, BorderLayout.EAST);
 		this.add(west, BorderLayout.WEST);
 		this.add(center, BorderLayout.CENTER);
+		this.add(east, BorderLayout.EAST);
 	}
 
 }
