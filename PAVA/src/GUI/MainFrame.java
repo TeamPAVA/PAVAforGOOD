@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 // 
 public class MainFrame extends JFrame { //toolbar gets added to this class
@@ -186,13 +187,19 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 
 		        
 		        about.addActionListener(new ActionListener() {
-		        	@Override
-		        	public void actionPerformed(ActionEvent e) {
-		        		//addAbout();
-		        	}
-		        	
-		        	
-		        });
+				    public void actionPerformed(ActionEvent e) {
+				      JOptionPane.showMessageDialog(null,"PAVAP is an absolute dream team. I first met PAVAP, or THE PAVAP as I call them, "
+				       + '\n' + "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, "
+				        + '\n' + "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
+				       + '\n' + "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
+				       + '\n' + "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
+				       + '\n' + "believes in clean energy and has contributed miles of code to Tesla’s autopilot "
+				       + '\n' + "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
+				       + '\n' + "Musk*, but they don’t like talking about that much... Long story short Team PAVAP is no "
+				       + '\n' + "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
+				       + '\n' + "are without a doubt, looking for PAVAP.", "About PAVAP", JOptionPane.PLAIN_MESSAGE);
+				    }
+				   });
 		        menuBar.add(home);
 		        menuBar.add(options);
 		        menuBar.add(Box.createHorizontalStrut(275));
@@ -294,11 +301,12 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		        
 		        signOut.addActionListener(new ActionListener() {
 
-
-			public void actionPerformed(ActionEvent e) {
-		        		//open loginFrame
-		        	}
-		        	
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						LoginFrame login = new LoginFrame();
+						login.setVisible(true);
+						setInvis();
+					}
 		        	
 		        });
 		       home.addActionListener(new ActionListener() {
@@ -312,15 +320,20 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		        });
 		   	        	
 		        
-		        about.addActionListener(new ActionListener() {
-
-
-			public void actionPerformed(ActionEvent e) {
-		        		//open about
-		        	}
-		        	
-		        	
-		        });
+		       about.addActionListener(new ActionListener() {
+				    public void actionPerformed(ActionEvent e) {
+				      JOptionPane.showMessageDialog(null,"PAVAP is an absolute dream team. I first met PAVAP, or THE PAVAP as I call them, "
+				       + '\n' + "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, "
+				        + '\n' + "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
+				       + '\n' + "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
+				       + '\n' + "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
+				       + '\n' + "believes in clean energy and has contributed miles of code to Tesla’s autopilot "
+				       + '\n' + "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
+				       + '\n' + "Musk*, but they don’t like talking about that much... Long story short Team PAVAP is no "
+				       + '\n' + "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
+				       + '\n' + "are without a doubt, looking for PAVAP.", "About PAVAP", JOptionPane.PLAIN_MESSAGE);
+				    }
+				   });
 		        options.addActionListener(new ActionListener() {
 
 
