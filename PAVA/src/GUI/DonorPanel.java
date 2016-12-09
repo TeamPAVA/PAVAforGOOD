@@ -25,6 +25,11 @@ import javax.swing.JTextField;
 public class DonorPanel extends JPanel {
 
 	private static final long serialVersionUID = 4761523114634863561L;
+	public JTextField name;
+	public JTextField cNum = new JTextField("",10);
+	public JTextField expDate;
+	public JTextField cvc;
+	public JTextField zip;
 
 	public DonorPanel () {
 		super();
@@ -57,18 +62,29 @@ public class DonorPanel extends JPanel {
 		newCard.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+       		 	name = new JTextField("", 7);
+				cNum = new JTextField("",10);
+				expDate = new JTextField("",6);
+				cvc = new JTextField("");
+				zip = new JTextField("");
+            	
+            	
+            	
+            	
+            	
+            	
             	JPanel panel = new JPanel();
             	panel.setLayout(new GridLayout(0, 2));
        		    panel.add(new JLabel("Name on card:"));
-       		 	panel.add(new JTextField("", 7));
+       		 	panel.add(name);
        		 	panel.add(new JLabel("Card number:"));
-    		 	panel.add(new JTextField("",10));
+    		 	panel.add(cNum);
     		 	panel.add(new JLabel("Exp. Date:"));
-       		 	panel.add(new JTextField("",6));
+       		 	panel.add(expDate);
        		    panel.add(new JLabel("Security Code:"));
-    		 	panel.add(new JTextField(""));
+    		 	panel.add(cvc);
     		 	panel.add(new JLabel("Zip Code:"));
-    		 	panel.add(new JTextField(""));
+    		 	panel.add(zip);
     		 	
        		 	
        		 	JOptionPane.showMessageDialog(null,panel,"New Card Information" ,JOptionPane.INFORMATION_MESSAGE);
@@ -85,15 +101,15 @@ public class DonorPanel extends JPanel {
             	panel.setLayout(new GridLayout(0, 2));
        		 	//panel.add(new JButton("Click"));
        		    panel.add(new JLabel("Name on card:"));
-       		 	panel.add(new JTextField("User Name", 7));
+       		 	panel.add(new JLabel(name.getText()));
        		 	panel.add(new JLabel("Card number:"));
-    		 	panel.add(new JTextField("5555-5555-5555-5555"));
+    		 	panel.add(new JLabel(cNum.getText()));
     		 	panel.add(new JLabel("Exp. Date:"));
-       		 	panel.add(new JTextField("10/17",6));
+       		 	panel.add(new JLabel(expDate.getText()));
        		    panel.add(new JLabel("Security Code:"));
-    		 	panel.add(new JTextField("123"));
+    		 	panel.add(new JLabel(cvc.getText()));
     		 	panel.add(new JLabel("Zip Code:"));
-    		 	panel.add(new JTextField("97845"));
+    		 	panel.add(new JLabel(zip.getText()));
     		 	
        		 	
        		 	JOptionPane.showMessageDialog(null,panel,"Card Information",JOptionPane.INFORMATION_MESSAGE);
