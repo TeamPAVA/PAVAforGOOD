@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -36,7 +37,7 @@ public class SignupPanel extends JFrame {
 
 		JLabel blank = new JLabel();
 		JPasswordField password = new JPasswordField("",5);
-		JButton ok = new JButton("Okay");
+		JButton next = new JButton("Next");
 		JButton signup = new JButton("Sign Up");
 		JButton cancel = new JButton("Cancel");
 		JRadioButton donor = new JRadioButton("Donor");
@@ -52,18 +53,27 @@ public class SignupPanel extends JFrame {
 		add(blank);
 		add(donor);
 		add(recipient);
-		add(ok);
+		add(next);
 		add(cancel);
 		pack();
 		setLocationRelativeTo(null);
 	
 	
-	ok.addActionListener(new ActionListener() {
+	next.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				FileWriter w = new FileWriter(users, true);
 				StringBuilder sb = new StringBuilder();
 				if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
+					Scanner idScan = new Scanner(users);
+					int id = idScan.nextInt();
+					id++;
+					
+					// URGENT:
+					// need to write new id back into the first slot/int of csv file
+					
+					// Also need to check file to see if username already exists in file
+					
 					sb.append(username.getText());
 					sb.append(',');
 					sb.append(password.getPassword());
@@ -73,10 +83,28 @@ public class SignupPanel extends JFrame {
 					} else {
 						sb.append("2");
 					}
+					sb.append(',');
+					sb.append(id);
 					sb.append('\n');
 					w.write(sb.toString());
+					idScan.close();
 					w.close();
+					if (donor.isSelected()) {	// Prompt user for card info to fill donor csv
+						SignupPanelDonor mySignupDonorPanel = new SignupPanelDonor(id);
+						mySignupDonorPanel.setVisible(true);						
+					} else {	// Write to recipient csv the ID + initial amount received
+						FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", true);
+						StringBuilder info = new StringBuilder();
+						info.append(id);
+						info.append(',');
+						info.append('0');
+						info.append('\n');
+						writeRecipient.write(info.toString());		
+						writeRecipient.close();
+					}
+
 				}
+
 			} catch (FileNotFoundException e1) {
 								//if cant find file, do this
 			} catch (IOException e1) {
