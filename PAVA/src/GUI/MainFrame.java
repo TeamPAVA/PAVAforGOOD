@@ -160,7 +160,7 @@ public class MainFrame extends JFrame { //toolbar gets added to this class
 		       options.addActionListener(new ActionListener() {
 		    	   @Override
 		    	   public void actionPerformed(ActionEvent e) {
-		    		  
+		    		  //open donor options panel
 		        	}
 		        	
 		        	
