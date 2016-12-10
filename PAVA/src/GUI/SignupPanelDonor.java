@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 public class SignupPanelDonor extends JFrame {
 	
-	public SignupPanelDonor(int ID) {
+	public SignupPanelDonor(String user, String pw) {
 	
 		setSize(400,550);
 		try {
@@ -74,7 +74,9 @@ public class SignupPanelDonor extends JFrame {
 				StringBuilder sb = new StringBuilder();
 				if (!userName.getText().isEmpty() && !userNum.getText().isEmpty() && !userExpDate.getText().isEmpty()
 						&& !userCvc.getText().isEmpty() && !userZip.getText().isEmpty()) {
-					sb.append(ID);
+					sb.append(user);
+					sb.append(',');
+					sb.append(pw);
 					sb.append(',');
 					sb.append('0');
 					sb.append(',');

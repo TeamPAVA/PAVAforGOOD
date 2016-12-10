@@ -65,14 +65,6 @@ public class SignupPanel extends JFrame {
 				FileWriter w = new FileWriter(users, true);
 				StringBuilder sb = new StringBuilder();
 				if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
-					Scanner idScan = new Scanner(users);
-					int id = idScan.nextInt();
-					id++;
-					
-					// URGENT:
-					// need to write new id back into the first slot/int of csv file
-					
-					// Also need to check file to see if username already exists in file
 					
 					sb.append(username.getText());
 					sb.append(',');
@@ -83,19 +75,19 @@ public class SignupPanel extends JFrame {
 					} else {
 						sb.append("2");
 					}
-					sb.append(',');
-					sb.append(id);
+
 					sb.append('\n');
 					w.write(sb.toString());
-					idScan.close();
 					w.close();
 					if (donor.isSelected()) {	// Prompt user for card info to fill donor csv
-						SignupPanelDonor mySignupDonorPanel = new SignupPanelDonor(id);
+						SignupPanelDonor mySignupDonorPanel = new SignupPanelDonor(username.getText(), password.getText());
 						mySignupDonorPanel.setVisible(true);						
-					} else {	// Write to recipient csv the ID + initial amount received
+					} else {	// Write to recipient csv the user/pass + initial amount received
 						FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", true);
 						StringBuilder info = new StringBuilder();
-						info.append(id);
+						info.append(username.getText());
+						info.append(',');
+						info.append(password.getPassword());
 						info.append(',');
 						info.append('0');
 						info.append('\n');
