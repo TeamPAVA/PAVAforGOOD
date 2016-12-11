@@ -177,7 +177,6 @@ public class DonorPanel extends JPanel {
 								cvc1.setText(users[6]);
 								zip1.setText(users[7]);
 
-								break;
 							}
 						}
 						fileScanner.close();
