@@ -213,37 +213,40 @@ public class DonorPanel extends JPanel {
 		submit.addActionListener(new java.awt.event.ActionListener() {
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				users[3] = name.getText();
-				users[4] = cNum.getText();
-				users[5] = expDate.getText();
-				users[6] = cvc.getText();
-				users[7] = zip.getText();
-				
-				sb.append(users[0]);
-				sb.append(',');
-				sb.append(users[1]);
-				sb.append(',');
-				sb.append(users[2]);
-				sb.append(',');
-				sb.append(users[3]);
-				sb.append(',');
-				sb.append(users[4]);
-				sb.append(',');
-				sb.append(users[5]);
-				sb.append(',');
-				sb.append(users[6]);
-				sb.append(',');
-				sb.append(users[7]);
-				sb.append(',');
-				
-				sb.append('\n');
-				try {
-					w.write(sb.toString());
-					w.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				if(hasBeenPushed == true) {
+					users[3] = name.getText();
+					users[4] = cNum.getText();
+					users[5] = expDate.getText();
+					users[6] = cvc.getText();
+					users[7] = zip.getText();
+					
+					sb.append(users[0]);
+					sb.append(',');
+					sb.append(users[1]);
+					sb.append(',');
+					sb.append(users[2]);
+					sb.append(',');
+					sb.append(users[3]);
+					sb.append(',');
+					sb.append(users[4]);
+					sb.append(',');
+					sb.append(users[5]);
+					sb.append(',');
+					sb.append(users[6]);
+					sb.append(',');
+					sb.append(users[7]);
+					sb.append(',');
+					
+					sb.append('\n');
+					try {
+						w.write(sb.toString());
+						w.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} 
+			
 				
 
 				JOptionPane.showMessageDialog(initial2, "Thank you for your donation!");
