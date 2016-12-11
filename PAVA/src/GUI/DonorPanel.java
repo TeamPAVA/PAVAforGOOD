@@ -101,8 +101,7 @@ public class DonorPanel extends JPanel {
 				panel.add(cvc);
 				panel.add(new JLabel("Zip Code:"));
 				panel.add(zip);
-				// THIS INFO NEEDS TO REPLACE WHAT WAS PREVIOUSLY STORED IN THE
-				// DONORDATABASECSV FOR THE DONOR
+
 
 
 				String database;
@@ -167,7 +166,6 @@ public class DonorPanel extends JPanel {
 						BufferedReader fileScanner = new BufferedReader(new FileReader(donors));
 						
 						while ((database = fileScanner.readLine()) != null) {
-							System.out.println(database);
 							String[] users = database.split(",");
 							if (users[0].equals(username)) {
 								
@@ -187,7 +185,6 @@ public class DonorPanel extends JPanel {
 
 
 					JOptionPane.showMessageDialog(null, panel, "Card Information", JOptionPane.INFORMATION_MESSAGE);
-					System.out.println("need to fill");
 				} else {
 					JPanel panel = new JPanel();
 					panel.setLayout(new GridLayout(0, 2));
