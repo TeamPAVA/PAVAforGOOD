@@ -21,26 +21,28 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 	private HomePanel homePanel;
 	private DonorPanel donorPanel;
 	private RecipientOptionsPanel recOptionsPanel;
+	private String username;
 	// private OptionsPanel optionsPanel; //this is split between recipient and
 	// donor, correct?
 	// private AboutPanel aboutPanel;
 	private JPanel current1;
 
-	public MainFrame(String userType) {
+	public MainFrame(String username, String userType) {
 		super();
 		int userTypeNum = Integer.parseInt(userType); // **********THIS IS WHAT
 														// WE PASS TO TOOLBAR
+		this.username = username;
 
 		setTitle("PAVAP");
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		DonorPanel myP = new DonorPanel();
+		DonorPanel myP = new DonorPanel(username);
 		add(myP);
 
 		// optionsPanel = new OptionsPanel();
 		// aboutPanel = new AboutPanel();
-		donorPanel = new DonorPanel();
+		donorPanel = new DonorPanel(username);
 		homePanel = new HomePanel();
 		recOptionsPanel = new RecipientOptionsPanel();
 		add(homePanel);

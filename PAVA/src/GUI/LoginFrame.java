@@ -148,7 +148,7 @@ public class LoginFrame extends JFrame {
 			        while((database = fileScanner.readLine()) != null){
 			           String[] users = database.split(",");
 			        	   if (users[0].equals(username.getText()) && users[1].equals(password.getText())) {
-			        		   MainFrame homeFrame = new MainFrame(users[2]); // Create a new JFrame for all panel changes starting at home not login.
+			        		   MainFrame homeFrame = new MainFrame(users[0],users[2]); // Create a new JFrame for all panel changes starting at home not login.
 			        		   setSize(700,700);
 			        		   homeFrame.setVisible(true);
 			        		   myMainFrame.setVisible(false); //dispose of the login frame because we no longer need it, just make a new one.
