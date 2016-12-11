@@ -38,6 +38,7 @@ public class DonorPanel extends JPanel {
 	public JTextField cvc;
 	public JTextField zip;
 	private String username;
+	private boolean hasBeenPushed;;
 	String[] users;
 	File donors;
 	FileWriter w; 
@@ -45,6 +46,7 @@ public class DonorPanel extends JPanel {
 
 	public DonorPanel(String username) {
 		super();
+		hasBeenPushed = false;
 		setBackground(Color.GRAY);
 		this.username = username;
 		donors = new File("donorDatabase.csv");
@@ -80,6 +82,7 @@ public class DonorPanel extends JPanel {
 		newCard.addActionListener(new java.awt.event.ActionListener() {
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				hasBeenPushed = true;
 				name = new JTextField("", 7);
 				cNum = new JTextField("", 10);
 				expDate = new JTextField("", 6);
@@ -100,8 +103,7 @@ public class DonorPanel extends JPanel {
 				panel.add(zip);
 				// THIS INFO NEEDS TO REPLACE WHAT WAS PREVIOUSLY STORED IN THE
 				// DONORDATABASECSV FOR THE DONOR
-				/////////////////////////////////////////////////////////////////////////////////////////// verena
-				// attempt to do so
+
 
 				String database;
 				
@@ -123,7 +125,6 @@ public class DonorPanel extends JPanel {
 					e.printStackTrace();
 				}
 
-				/////////////////////////////////////////////////////////////////////////////////////////////
 
 				JOptionPane.showMessageDialog(null, panel, "New Card Information", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -134,49 +135,79 @@ public class DonorPanel extends JPanel {
 		currCard.addActionListener(new java.awt.event.ActionListener() {
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				JPanel panel = new JPanel();
-				panel.setLayout(new GridLayout(0, 2));
-				// panel.add(new JButton("Click"));
-				panel.add(new JLabel("Name on card:"));
-				panel.add(new JLabel(name.getText()));
-				panel.add(new JLabel("Card number:"));
-				panel.add(new JLabel(cNum.getText()));
-				panel.add(new JLabel("Exp. Date:"));
-				panel.add(new JLabel(expDate.getText()));
-				panel.add(new JLabel("Security Code:"));
-				panel.add(new JLabel(cvc.getText()));
-				panel.add(new JLabel("Zip Code:"));
-				panel.add(new JLabel(zip.getText()));
-				// THIS NEEDS TO READ FROM THE DONOR DATABASE
+				if(hasBeenPushed == false) {
+					JPanel panel = new JPanel();
+					panel.setLayout(new GridLayout(0, 2));
+					//READ FROM CSV
+					JLabel name1;
+					JLabel cNum1;
+					JLabel expDate1;
+					JLabel cvc1;
+					JLabel zip1;
+					name1 = new JLabel();
+					cNum1 = new JLabel();
+					expDate1 = new JLabel();
+					cvc1 = new JLabel();
+					zip1 = new JLabel();
 
-				/////////////////////////////////////////////////////////////////////////////////////////// verena
-				/////////////////////////////////////////////////////////////////////////////////////////// attempt
-				/////////////////////////////////////////////////////////////////////////////////////////// to
-				/////////////////////////////////////////////////////////////////////////////////////////// do
-				/////////////////////////////////////////////////////////////////////////////////////////// so
+					panel.setLayout(new GridLayout(0, 2));
+					panel.add(new JLabel("Name on card:"));
+					panel.add(name1);
+					panel.add(new JLabel("Card number:"));
+					panel.add(cNum1);
+					panel.add(new JLabel("Exp. Date:"));
+					panel.add(expDate1);
+					panel.add(new JLabel("Security Code:"));
+					panel.add(cvc1);
+					panel.add(new JLabel("Zip Code:"));
+					panel.add(zip1);
 
-//				String database;
-//				try {
-//					BufferedReader fileScanner = new BufferedReader(new FileReader(donors));
-//					while ((database = fileScanner.readLine()) != null) {
-//						String[] users = database.split(",");
-//						if (users[0].equals(username)) {
-//							users[3] = name.getText();
-//							users[4] = cNum.getText();
-//							users[5] = expDate.getText();
-//							users[6] = cvc.getText();
-//							users[7] = zip.getText();
-//						}
-//					}
-//					fileScanner.close();
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+					String database;
+					try {
+						BufferedReader fileScanner = new BufferedReader(new FileReader(donors));
+						
+						while ((database = fileScanner.readLine()) != null) {
+							System.out.println(database);
+							String[] users = database.split(",");
+							if (users[0].equals(username)) {
+								
+								name1.setText(users[3]);
+								cNum1.setText(users[4]);
+								expDate1.setText(users[5]);
+								cvc1.setText(users[6]);
+								zip1.setText(users[7]);
 
-				/////////////////////////////////////////////////////////////////////////////////////////////
+								break;
+							}
+						}
+						fileScanner.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-				JOptionPane.showMessageDialog(null, panel, "Card Information", JOptionPane.INFORMATION_MESSAGE);
+
+					JOptionPane.showMessageDialog(null, panel, "Card Information", JOptionPane.INFORMATION_MESSAGE);
+					System.out.println("need to fill");
+				} else {
+					JPanel panel = new JPanel();
+					panel.setLayout(new GridLayout(0, 2));
+					// panel.add(new JButton("Click"));
+					panel.add(new JLabel("Name on card:"));
+					panel.add(new JLabel(name.getText()));
+					panel.add(new JLabel("Card number:"));
+					panel.add(new JLabel(cNum.getText()));
+					panel.add(new JLabel("Exp. Date:"));
+					panel.add(new JLabel(expDate.getText()));
+					panel.add(new JLabel("Security Code:"));
+					panel.add(new JLabel(cvc.getText()));
+					panel.add(new JLabel("Zip Code:"));
+					panel.add(new JLabel(zip.getText()));
+					
+					JOptionPane.showMessageDialog(null, panel, "Card Information", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+			
 			}
 		});
 
