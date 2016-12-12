@@ -14,6 +14,10 @@ import javax.swing.JPanel;
 // 
 public class MainFrame extends JFrame { // toolbar gets added to this class
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2445745780541158483L;
 	// Jframe instead of JPanel. This home frame will hold and show all of the
 	// other panels.
 	// Dimensions, names and such are just placeholders.
@@ -37,11 +41,9 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		DonorPanel myP = new DonorPanel(username);
-		add(myP);
+		//DonorPanel myP = new DonorPanel(username);
+		//add(myP);
 
-		// optionsPanel = new OptionsPanel();
-		// aboutPanel = new AboutPanel();
 		donorPanel = new DonorPanel(username);
 		homePanel = new HomePanel();
 		recOptionsPanel = new RecipientOptionsPanel();
@@ -51,7 +53,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		menuBar = new JMenuBar();
 
 		if (userTypeNum == 0) {
-			// setupAdmin();
+			 setupAdmin();
 		} else if (userTypeNum == 1) {
 			setupDonor();
 		} else if (userTypeNum == 2) {
@@ -70,7 +72,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 	 * @author Patrick Stevens
 	 */
 	private void setInvis() {
-		this.setVisible(false);
+		setVisible(false);
 	}
 
 	/**
@@ -190,15 +192,15 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 								+ "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, " + '\n'
 								+ "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
 								+ '\n'
-								+ "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
+								+ "I unfortunately didnï¿½t get the part, but I digress.) PAVAP moved onto to develop the "
 								+ '\n'
-								+ "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
+								+ "first iPhone prototype before Steve Jobs ï¿½acquiredï¿½ it (His words, not mine.) PAVAP "
 								+ '\n'
-								+ "believes in clean energy and has contributed miles of code to Tesla’s autopilot "
+								+ "believes in clean energy and has contributed miles of code to Teslaï¿½s autopilot "
 								+ '\n'
 								+ "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
 								+ '\n'
-								+ "Musk*, but they don’t like talking about that much... Long story short Team PAVAP is no "
+								+ "Musk*, but they donï¿½t like talking about that much... Long story short Team PAVAP is no "
 								+ '\n'
 								+ "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
 								+ '\n' + "are without a doubt, looking for PAVAP.",
@@ -234,7 +236,9 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		signOut.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// open loginFrame
+				LoginFrame login = new LoginFrame();
+				login.setVisible(true);
+				setInvis();
 			}
 
 		});
@@ -248,7 +252,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 
 		home.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// open home
+				addHome();
 			}
 
 		});
@@ -256,14 +260,35 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		about.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// open about
+				JOptionPane.showMessageDialog(null,
+						"PAVAP is an absolute dream team. I first met PAVAP, or THE PAVAP as I call them, " + '\n'
+								+ "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, " + '\n'
+								+ "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
+								+ '\n'
+								+ "I unfortunately didnt get the part, but I digress.) PAVAP moved onto to develop the "
+								+ '\n'
+								+ "first iPhone prototype before Steve Jobs acquired it (His words, not mine.) PAVAP "
+								+ '\n'
+								+ "believes in clean energy and has contributed miles of code to Teslas autopilot "
+								+ '\n'
+								+ "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
+								+ '\n'
+								+ "Musk*, but they dont like talking about that much... Long story short Team PAVAP is no "
+								+ '\n'
+								+ "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
+								+ '\n' + "are without a doubt, looking for PAVAP.",
+						"About PAVAP", JOptionPane.PLAIN_MESSAGE);
 			}
 
 		});
-		menuBar.add(options);
+		
 		menuBar.add(home);
-		menuBar.add(signOut);
+		menuBar.add(options);
+		//menuBar.add(Box.createHorizontalStrut(275));
+
+		menuBar.add(Box.createHorizontalGlue());
 		menuBar.add(about);
+		menuBar.add(signOut);
 
 	}
 
@@ -280,15 +305,13 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		JButton home = new JButton("Home");
 		JButton signOut = new JButton("Sign Out");
 
-		menuBar.add(Box.createHorizontalGlue());
-
 		signOut.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				setInvis();
 				LoginFrame login = new LoginFrame();
 				login.setVisible(true);
-				setInvis();
+				
 			}
 
 		});
@@ -307,15 +330,15 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 								+ "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, " + '\n'
 								+ "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
 								+ '\n'
-								+ "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
+								+ "I unfortunately didnt get the part, but I digress.) PAVAP moved onto to develop the "
 								+ '\n'
-								+ "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
+								+ "first iPhone prototype before Steve Jobs acquired it (His words, not mine.) PAVAP "
 								+ '\n'
-								+ "believes in clean energy and has contributed miles of code to Tesla’s autopilot "
+								+ "believes in clean energy and has contributed miles of code to Teslas autopilot "
 								+ '\n'
 								+ "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
 								+ '\n'
-								+ "Musk*, but they don’t like talking about that much... Long story short Team PAVAP is no "
+								+ "Musk*, but they dont like talking about that much... Long story short Team PAVAP is no "
 								+ '\n'
 								+ "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
 								+ '\n' + "are without a doubt, looking for PAVAP.",
@@ -333,9 +356,12 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		});
 
 		menuBar.add(home);
-		menuBar.add(signOut);
-		menuBar.add(about);
 		menuBar.add(options);
+		
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(about);
+		
+		menuBar.add(signOut);
 
 	}
 
