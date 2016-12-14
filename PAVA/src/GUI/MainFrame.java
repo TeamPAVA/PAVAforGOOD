@@ -13,7 +13,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-// 
+/**
+* Frame that holdes the panels once logged in. Also has a menubar. 
+* 
+* @author Patrick Stevens
+* @author Verena Nicolaou
+*/
 public class MainFrame extends JFrame { // toolbar gets added to this class
 
 	/**
@@ -48,7 +53,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 
 		donorPanel = new DonorPanel(username);
 		homePanel = new HomePanel();
-		recOptionsPanel = new RecipientOptionsPanel();
+		recOptionsPanel = new RecipientOptionsPanel(username);
 		add(homePanel);
 		current1 = homePanel;
 

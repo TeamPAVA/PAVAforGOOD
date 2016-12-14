@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -211,8 +212,67 @@ public class DonorPanel extends JPanel {
 		submit.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
 
 		submit.addActionListener(new java.awt.event.ActionListener() {
+			File recipData = new File("recipientDatabase.csv");
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				
+				String amount = donateAmount.getText().substring(1);
+				int donAmount = Integer.parseInt(amount);
+				
+				int numOfRecipients = 0;
+				try {
+			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
+			        String database;
+			        while((database = fileScanner.readLine()) != null){
+			           numOfRecipients++;
+			        }
+			        fileScanner.close();
+			   } catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				int amountPerRec = donAmount / numOfRecipients;
+				//parse through recipieient and add amount per rec to their total amount
+				
+				try {
+			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
+			        String database = null;
+			        String line = "";
+			        
+			        ////////////////////////////////////////////////////
+			        while((line = fileScanner.readLine()) != null) {
+			        	String[] users = line.split(",");
+			        	if(database == null) {
+			        		database = users[0] + "," + users[1] + "," + users[2];
+			        	} else {
+			        		database = database + users[0] + "," + users[1] + "," + users[2];
+			        	}
+			        	database = database + "\n";
+			        }
+			        
+			        System.out.print(database);
+			        
+			        FileWriter writeRecipient = new FileWriter("hi.csv", true);
+				
+					writeRecipient.write(database.toString());		
+					writeRecipient.close();
+			    
+			        
+			        ///////////////////////////////////////////////////
+			   } catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+						
+				
 				if(hasBeenPushed == true) {
 					users[3] = name.getText();
 					users[4] = cNum.getText();
