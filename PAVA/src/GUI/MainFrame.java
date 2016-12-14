@@ -192,15 +192,15 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 								+ "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, " + '\n'
 								+ "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
 								+ '\n'
-								+ "I unfortunately didn�t get the part, but I digress.) PAVAP moved onto to develop the "
+								+ "I unfortunately did not get the part, but I digress.) PAVAP moved onto to develop the "
 								+ '\n'
-								+ "first iPhone prototype before Steve Jobs �acquired� it (His words, not mine.) PAVAP "
+								+ "first iPhone prototype before Steve Jobs \"acquired\" it (His words, not mine.) PAVAP "
 								+ '\n'
-								+ "believes in clean energy and has contributed miles of code to Tesla�s autopilot "
+								+ "believes in clean energy and has contributed miles of code to Tesla\'s autopilot "
 								+ '\n'
 								+ "software. Fun Fact: At least one of the PAVAP team is from the same planet as Elon "
 								+ '\n'
-								+ "Musk*, but they don�t like talking about that much... Long story short Team PAVAP is no "
+								+ "Musk*, but they don\'t like talking about that much... Long story short Team PAVAP is no "
 								+ '\n'
 								+ "fly-by-night operation. If you are looking for the tried and true, then you, kind person, "
 								+ '\n' + "are without a doubt, looking for PAVAP.",
