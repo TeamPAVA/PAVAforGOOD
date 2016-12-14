@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
-* Frame that holdes the panels once logged in. Also has a menubar. 
+* Frame that holds the panels once logged in. Also has a menubar. 
 * 
 * @author Patrick Stevens
 * @author Verena Nicolaou
