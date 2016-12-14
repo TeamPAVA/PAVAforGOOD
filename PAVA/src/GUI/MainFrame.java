@@ -3,7 +3,9 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,7 +13,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-// 
+/**
+* Frame that holdes the panels once logged in. Also has a menubar. 
+* 
+* @author Patrick Stevens
+* @author Verena Nicolaou
+*/
 public class MainFrame extends JFrame { // toolbar gets added to this class
 
 	/**
@@ -61,7 +68,11 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		}
 
 		this.setJMenuBar(menuBar);
-
+		try {
+        	setIconImage(ImageIO.read(getClass().getResource("/p.png"))); // http://wiro.donweb-homeip.net/p-2/
+        } catch (IOException e){
+        	
+        }
 		pack();
 		setLocationRelativeTo(null);
 	}
