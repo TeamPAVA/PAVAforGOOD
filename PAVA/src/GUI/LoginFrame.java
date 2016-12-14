@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 import javax.swing.Box;
@@ -68,7 +70,7 @@ public class LoginFrame extends JFrame {
         add(imagePanel);
         this.setSize(300, 450);
         try {
-        	setIconImage(ImageIO.read(new File("p.png"))); // http://wiro.donweb-homeip.net/p-2/
+        	setIconImage(ImageIO.read(getClass().getResource("/p.png"))); // http://wiro.donweb-homeip.net/p-2/
         } catch (IOException e){
         	
         }
@@ -91,7 +93,9 @@ public class LoginFrame extends JFrame {
 		
 		
 		try {
-        	myImage = ImageIO.read(new File("login.jpg")); // http://www.mobileswall.com/tag/abstract/page/3/
+        	//myImage = ImageIO.read(new File("login.jpg")); // http://www.mobileswall.com/tag/abstract/page/3/
+			//URL url = getClass().getResource("/PAVAP LOGO.png");
+			myImage = ImageIO.read(getClass().getResource("/login.jpg"));
         } catch (IOException e) {
         	//blow up the program.
         }
