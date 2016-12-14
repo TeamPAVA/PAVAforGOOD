@@ -14,13 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class SignupPanelDonor extends JFrame {
+public class SignupFrameDonor extends JFrame {
 	
-	public SignupPanelDonor(String user, String pw) {
+	public SignupFrameDonor(String user, String pw) {
 	
 		setSize(400,550);
 		try {
-        	setIconImage(ImageIO.read(new File("p.png"))); // http://wiro.donweb-homeip.net/p-2/
+        	setIconImage(ImageIO.read(getClass().getResource("/p.png"))); // http://wiro.donweb-homeip.net/p-2/
         } catch (IOException e) {
         	
         }

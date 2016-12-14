@@ -170,7 +170,7 @@ public class LoginFrame extends JFrame {
 		
 		signup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SignupPanel mySignupPanel = new SignupPanel(users);
+				SignupFrame mySignupPanel = new SignupFrame(users);
 				mySignupPanel.setVisible(true);
 //				try {
 //					
