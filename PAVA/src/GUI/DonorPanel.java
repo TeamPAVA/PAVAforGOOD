@@ -217,7 +217,7 @@ public class DonorPanel extends JPanel {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				
 				String amount = donateAmount.getText().substring(1);
-				int donAmount = Integer.parseInt(amount);
+				double donAmount = Integer.parseInt(amount);
 				
 				int numOfRecipients = 0;
 				try {
@@ -231,9 +231,8 @@ public class DonorPanel extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				int amountPerRec = donAmount / numOfRecipients;
+				double amountPerRec = donAmount / numOfRecipients;
 				//parse through recipieient and add amount per rec to their total amount
-				
 				try {
 			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
 			        String database = null;
@@ -243,21 +242,22 @@ public class DonorPanel extends JPanel {
 			        while((line = fileScanner.readLine()) != null) {
 			        	String[] users = line.split(",");
 			        	if(database == null) {
-			        		database = users[0] + "," + users[1] + "," + users[2];
+			        		double amt = Double.parseDouble(users[2]) + amountPerRec;
+			        		database = users[0] + "," + users[1] + "," +  amt;
 			        	} else {
-			        		database = database + users[0] + "," + users[1] + "," + users[2];
+			        		double amt = Double.parseDouble(users[2]) + amountPerRec;
+			        		database = database + users[0] + "," + users[1] + "," +amt;
 			        	}
 			        	database = database + "\n";
 			        }
 			        
-			        System.out.print(database);
 			        
-			        FileWriter writeRecipient = new FileWriter("hi.csv", true);
+			        FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", false);
 				
-					writeRecipient.write(database.toString());		
+					writeRecipient.write(database);		
 					writeRecipient.close();
 			    
-			        
+			        fileScanner.close();
 			        ///////////////////////////////////////////////////
 			   } catch (IOException e1) {
 					// TODO Auto-generated catch block
