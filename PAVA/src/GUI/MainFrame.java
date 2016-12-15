@@ -32,6 +32,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 	private HomePanel homePanel;
 	private DonorPanel donorPanel;
 	private RecipientOptionsPanel recOptionsPanel;
+	private DonorOptionsPanel donorOpsPanel;
 	private String username;
 	// private OptionsPanel optionsPanel; //this is split between recipient and
 	// donor, correct?
@@ -54,6 +55,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		donorPanel = new DonorPanel(username);
 		homePanel = new HomePanel();
 		recOptionsPanel = new RecipientOptionsPanel(username);
+		donorOpsPanel = new DonorOptionsPanel(username);
 		add(homePanel);
 		current1 = homePanel;
 
@@ -85,7 +87,13 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 	private void setInvis() {
 		setVisible(false);
 	}
-
+	private void addDonorOptions() {
+		this.remove(current1);
+		this.add(donorOpsPanel);
+		current1 = donorOpsPanel;
+		this.revalidate();
+		this.repaint(); 
+	}
 	/**
 	 * Helper method to set the recipient options panel
 	 * 
@@ -176,7 +184,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		options.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// open donor options panel //addison will add here
+				addDonorOptions();
 			}
 
 		});
