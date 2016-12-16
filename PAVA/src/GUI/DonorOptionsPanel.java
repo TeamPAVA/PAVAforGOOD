@@ -13,6 +13,11 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Panel for Donor options
+ * @author Addison
+ *
+ */
 public class DonorOptionsPanel extends JPanel {
 	private String cardName;
 	private String cardNum;

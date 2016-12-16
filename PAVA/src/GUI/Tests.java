@@ -13,6 +13,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+/**
+ * JUnit testing
+ * @author Adrian, Addison, Patrick, Verena, Phillip
+ *
+ */
 public class Tests {
 
 	@Test

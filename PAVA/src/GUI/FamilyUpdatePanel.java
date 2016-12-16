@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Panel for family updates which are "stories" the recipients write
+ * @author Adrian
+ *
+ */
 public class FamilyUpdatePanel extends JPanel {
 	/**
 	 * 

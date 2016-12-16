@@ -7,7 +7,7 @@ import GUI.LoginFrame;
 // TODO: Auto-generated Javadoc
 /**
  * The Class PavaMain.
- * @author 
+ * @author Adrian
  */
 public final class PavaMain {
 	

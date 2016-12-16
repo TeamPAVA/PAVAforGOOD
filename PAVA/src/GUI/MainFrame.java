@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /**
 * Frame that holds the panels once logged in. Also has a menubar. 
 * 
-* @author Patrick Stevens
+* @author Patrick Stevens, Verena, Addison
 */
 public class MainFrame extends JFrame { // toolbar gets added to this class
 

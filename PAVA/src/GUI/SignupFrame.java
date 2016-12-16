@@ -18,6 +18,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+/**
+ * Frame for holding signing up 
+ * @author Phillip, Addison
+ *
+ */
 public class SignupFrame extends JFrame {
 	
 	public SignupFrame(File users) {

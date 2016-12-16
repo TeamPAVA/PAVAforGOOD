@@ -10,6 +10,11 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Panel for admin options
+ * @author Verena
+ *
+ */
 public class AdminOptionsPanel extends JPanel{
 	public AdminOptionsPanel () {
 		super();

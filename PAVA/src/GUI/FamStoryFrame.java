@@ -20,6 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * Frame for family updates
+ * @author Adrian
+ *
+ */
 public class FamStoryFrame extends JFrame {
 
 	File imageFile;

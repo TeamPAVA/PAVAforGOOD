@@ -14,6 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * Frame for holding signing up
+ * @author Phillip
+ *
+ */
 public class SignupFrameDonor extends JFrame {
 	
 	public SignupFrameDonor(String user, String pw) {

@@ -23,6 +23,11 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
+/**
+ * Home panel where you arrive after logging in
+ * @author Adrian
+ *
+ */
 public class HomePanel extends JPanel {
 	
 	/**
