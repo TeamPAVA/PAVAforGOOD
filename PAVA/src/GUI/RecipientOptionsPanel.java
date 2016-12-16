@@ -16,6 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+* Recipient Options
+* @author Verena Nicolaou
+*/
 public class RecipientOptionsPanel extends JPanel {
 	public RecipientOptionsPanel (String username) {
 		super();

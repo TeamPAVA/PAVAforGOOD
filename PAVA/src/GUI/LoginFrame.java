@@ -46,7 +46,11 @@ import javax.swing.JTextField;
 
 
 
-
+/**
+* Login Frame
+* 
+* @author Verena Nicolaou
+*/
 
 public class LoginFrame extends JFrame {
 

@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 /**
  * The Panel class for the Donor Panel
  * 
- * @author Patrick Stevens
+ * @author Patrick Stevens and Verena Nicolaou
  */
 public class DonorPanel extends JPanel {
 

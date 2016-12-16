@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 * Frame that holds the panels once logged in. Also has a menubar. 
 * 
 * @author Patrick Stevens
-* @author Verena Nicolaou
 */
 public class MainFrame extends JFrame { // toolbar gets added to this class
 
@@ -32,6 +31,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 	private HomePanel homePanel;
 	private DonorPanel donorPanel;
 	private RecipientOptionsPanel recOptionsPanel;
+	private AdminOptionsPanel adminOptionsPanel;
 	private String username;
 	// private OptionsPanel optionsPanel; //this is split between recipient and
 	// donor, correct?
@@ -54,6 +54,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		donorPanel = new DonorPanel(username);
 		homePanel = new HomePanel();
 		recOptionsPanel = new RecipientOptionsPanel(username);
+		adminOptionsPanel = new AdminOptionsPanel(username);
 		add(homePanel);
 		current1 = homePanel;
 
@@ -65,7 +66,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 			setupDonor();
 		} else if (userTypeNum == 2) {
 			setupRec();
-		}
+		} 
 
 		this.setJMenuBar(menuBar);
 		try {
@@ -94,6 +95,14 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		this.remove(current1);
 		this.add(recOptionsPanel);
 		current1 = recOptionsPanel;
+		this.revalidate();
+		this.repaint();
+	}
+	
+	private void addAdminOptions() {
+		this.remove(current1);
+		this.add(adminOptionsPanel);
+		current1 = adminOptionsPanel;
 		this.revalidate();
 		this.repaint();
 	}
@@ -256,7 +265,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		options.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// open optionsPanel
+				addAdminOptions();
 			}
 
 		});
