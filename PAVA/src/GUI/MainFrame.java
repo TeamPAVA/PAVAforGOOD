@@ -97,7 +97,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		this.add(donorOpsPanel);
 		current1 = donorOpsPanel;
 		this.revalidate();
-		this.repaint(); 
+		this.repaint();
 	}
 	/**
 	 * Helper method to set the recipient options panel
@@ -198,6 +198,8 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addDonorOptions();
+				donorOpsPanel.revalidate();
+				donorOpsPanel.repaint();
 			}
 
 		});
