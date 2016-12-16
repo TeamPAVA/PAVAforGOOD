@@ -46,7 +46,7 @@ public class DonorOptionsPanel extends JPanel {
 		JLabel currCard = new JLabel("Current card on file: ");
 		JLabel cardN = new JLabel("               Card Name: " + cardName);
 		JLabel cardNumber = new JLabel("               Card Number: " + cardNum);
-		JLabel cardE = new JLabel("               Card Experation Date: " + cardEXP);
+		JLabel cardE = new JLabel("               Card Expiration Date: " + cardEXP);
 		
 		JLabel amountDonated = new JLabel("Amount Donated: $" + donations);
 		

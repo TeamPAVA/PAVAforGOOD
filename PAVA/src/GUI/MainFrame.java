@@ -58,7 +58,7 @@ public class MainFrame extends JFrame { // toolbar gets added to this class
 		homePanel = new HomePanel();
 		recOptionsPanel = new RecipientOptionsPanel(username);
 
-		adminOptionsPanel = new AdminOptionsPanel(username);
+		adminOptionsPanel = new AdminOptionsPanel();
 
 		donorOpsPanel = new DonorOptionsPanel(username);
 		add(homePanel);
