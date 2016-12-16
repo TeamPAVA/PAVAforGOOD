@@ -5,34 +5,24 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-//import com.opencsv.CSVReader;
-//import com.opencsv.CSVWriter;
-
 /**
  * The Panel class for the Donor Panel
  * 
- * @author Patrick Stevens and Verena Nicolaou
+ * @author Patrick Stevens
  */
 public class DonorPanel extends JPanel {
 
@@ -108,15 +98,6 @@ public class DonorPanel extends JPanel {
 				panel.add(new JLabel("Zip Code:"));
 				panel.add(zip);
 
-
-			
-//				try {
-//					CSVReader reader = new CSVReader(new FileReader("donorDatabase.csv"),',');
-//					csvBody = reader.readAll();
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
 				String database;
 				
 				try {
@@ -224,41 +205,16 @@ public class DonorPanel extends JPanel {
 		submit.setFont(new Font(labelFont.getName(), Font.PLAIN, 20));
 
 		submit.addActionListener(new java.awt.event.ActionListener() {
-			File recipData = new File("recipientDatabase.csv");
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				
 				String amount = donateAmount.getText().substring(1);
 				double donAmount = Integer.parseInt(amount);
-				
-				int numOfRecipients = 0;
+				recipientData(donAmount);
 				try {
-			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
-			        String database;
-			        while((database = fileScanner.readLine()) != null){
-			           numOfRecipients++;
-			        }
-			        fileScanner.close();
-			   } catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				double amountPerRec = donAmount / numOfRecipients;
-				//parse through recipieient and add amount per rec to their total amount
-				try {
-			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
 			    	BufferedReader donorScanner = new BufferedReader(new FileReader(donors));
-			        String database = "";
-			        String line;
 			        String donorData;
 			        String donorInfo = "";
-			        
-			        while((line = fileScanner.readLine()) != null) {
-			        	String[] users = line.split(",");
-			        		double amt = Double.parseDouble(users[2]) + amountPerRec;
-			        		database = users[0] + "," + users[1] + "," +  amt;			        	
-			        		database = database + "\n";
-			        }
 			        while((donorData = donorScanner.readLine()) != null) {
 			        	String[] donors = donorData.split(",");
 			        		double donation = Double.parseDouble(donors[2]);
@@ -272,16 +228,9 @@ public class DonorPanel extends JPanel {
 				        	}
 			        	donorInfo = donorInfo + "\n";
 			        }
-			        
-			        FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", false);
 			        FileWriter donorWriter = new FileWriter("donorDatabase.csv", false);
-				
-					writeRecipient.write(database);		
-					writeRecipient.close();
 					donorWriter.write(donorInfo);		
-					donorWriter.close();
-			    
-			        fileScanner.close();
+					donorWriter.close();			
 			        donorScanner.close();
 			   } catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -309,5 +258,40 @@ public class DonorPanel extends JPanel {
 
 		setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
 		add(initial2, BorderLayout.CENTER);
+	}
+	
+	public void recipientData(Double donation) {
+		int recCount = 0;
+		try {
+	    	BufferedReader fileScanner = new BufferedReader(new FileReader("recipientDatabase.csv"));	
+	        String database;
+	        while((database = fileScanner.readLine()) != null){
+	        	recCount++;
+	        }
+	        fileScanner.close();
+	    } catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		double amountPerRec = donation / recCount;
+		//parse through recipieient and add amount per rec to their total amount
+		try {
+	    	BufferedReader fileScanner = new BufferedReader(new FileReader("recipientDatabase.csv"));	
+	        String database = "";
+	        String line;      
+	        while((line = fileScanner.readLine()) != null) {
+	        	String[] users = line.split(",");
+	        	double amt = Double.parseDouble(users[2]) + amountPerRec;
+	        	database = database + users[0] + "," + users[1] + "," +  amt + "\n";			        	
+	        }
+	        FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", false);
+	        writeRecipient.write(database);		
+			writeRecipient.close();
+			 fileScanner.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+	   }
 	}
 }
