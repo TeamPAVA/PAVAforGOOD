@@ -288,7 +288,7 @@ public class DonorPanel extends JPanel {
 	        FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", false);
 	        writeRecipient.write(database);		
 			writeRecipient.close();
-			 fileScanner.close();
+			fileScanner.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

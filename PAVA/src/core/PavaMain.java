@@ -7,6 +7,7 @@ import GUI.LoginFrame;
 // TODO: Auto-generated Javadoc
 /**
  * The Class PavaMain.
+ * @author 
  */
 public final class PavaMain {
 	
@@ -23,35 +24,9 @@ public final class PavaMain {
 	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
-	      //fetch user record from the "database"
-	      User model  = retrieveUserFromDatabase();
-
-	      //Create a view : to write User details on console
-	      UserView view = new UserView();
-
-	      UserController controller = new UserController(model, view);
-
-	      controller.updateView();
-
-	      //update model data
-	      controller.setUserName("John");
-
-	      controller.updateView();
-	      
-
 		EventQueue.invokeLater(() -> {
 			LoginFrame ex = new LoginFrame();
             ex.setVisible(true);
         });
-
-
 	}
-	
-	private static User retrieveUserFromDatabase() {
-		User user = new User();
-		user.setName("Robert");
-		user.setAnnualIncome(35000);
-		return user;
-	}
-
 }

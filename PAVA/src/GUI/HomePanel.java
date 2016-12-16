@@ -30,69 +30,67 @@ public class HomePanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 5958726568815914406L;
 
-	private class FamilyUpdatePanel extends JPanel {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = -4261502008723939345L;
-		private int userStoryID;
-		private String title;
-		private String story;
-		private String pathToImage;
-		private ImageIcon image;
-		
-		public FamilyUpdatePanel(int id) {
-			super();
-			userStoryID = id;
-			setBackground(Color.GRAY);
-			setLayout(new BorderLayout());
-			
-			if (loadIn()) {
-				setUp();
-			}
-			//loadIn();
-			//setUp();
-		}
-		
-		public Boolean loadIn() {
-			Boolean lineFound = false;
-			Scanner fileScanner;
-			Scanner lineScanner;
-		    try {
-		    	fileScanner = new Scanner(new File("famStoriesDatabase.csv"));
-		    	while (fileScanner.hasNextLine() && !lineFound) {
-		    		lineScanner = new Scanner(fileScanner.nextLine());
-		    		lineScanner.useDelimiter(",");
-		    		String tempVar = lineScanner.next();
-		    		if (tempVar.equals(String.valueOf(userStoryID))) {
-		    			lineFound = true;
-			    		title = lineScanner.next();
-			    		story = lineScanner.next();
-			    		pathToImage = lineScanner.next();
-		    		}
-		    	}
-		    } catch (FileNotFoundException e1) {
-		     e1.printStackTrace();
-		   }
-		return lineFound;
-		}
-		
-		private void setUp() {
-			Font titleFont = new Font("Arial", Font.BOLD,20);
-			Font storyFont = new Font("Helvetica", Font.BOLD,14);
-			JLabel famPic = new JLabel(new ImageIcon(pathToImage));
-			
-			JLabel titleLabel = new JLabel(title.toUpperCase());
-			JLabel storyLabel = new JLabel("<html><body style='width: 250 px'>" + story);
-			
-			titleLabel.setFont(titleFont);
-			storyLabel.setFont(storyFont);
-			
-			this.add(famPic, BorderLayout.NORTH);
-			this.add(titleLabel, BorderLayout.CENTER);
-			this.add(storyLabel, BorderLayout.SOUTH);
-		}
-	}
+//	public class FamilyUpdatePanel extends JPanel {
+//		/**
+//		 * 
+//		 */
+//		private static final long serialVersionUID = -4261502008723939345L;
+//		private String title;
+//		private String story;
+//		private String pathToImage;
+//		private ImageIcon image;
+//		
+//		public FamilyUpdatePanel(int id) {
+//			super();
+//			setBackground(Color.GRAY);
+//			setLayout(new BorderLayout());
+//			
+//			if (loadIn(id)) {
+//				setUp();
+//			}
+//			//loadIn();
+//			//setUp();
+//		}
+//		
+//		public Boolean loadIn(int id) {
+//			Boolean lineFound = false;
+//			Scanner fileScanner;
+//			Scanner lineScanner;
+//		    try {
+//		    	fileScanner = new Scanner(new File("famStoriesDatabase.csv"));
+//		    	while (fileScanner.hasNextLine() && !lineFound) {
+//		    		lineScanner = new Scanner(fileScanner.nextLine());
+//		    		lineScanner.useDelimiter(",");
+//		    		String tempVar = lineScanner.next();
+//		    		if (tempVar.equals(String.valueOf(id))) {
+//		    			lineFound = true;
+//			    		title = lineScanner.next();
+//			    		story = lineScanner.next();
+//			    		pathToImage = lineScanner.next();
+//		    		}
+//		    	}
+//		    } catch (FileNotFoundException e1) {
+//		     e1.printStackTrace();
+//		   }
+//		return lineFound;
+//		}
+//		
+//		private void setUp() {
+//			Font titleFont = new Font("Arial", Font.BOLD,20);
+//			Font storyFont = new Font("Helvetica", Font.BOLD,14);
+//			JLabel famPic = new JLabel(new ImageIcon(pathToImage));
+//			
+//			JLabel titleLabel = new JLabel(title.toUpperCase());
+//			JLabel storyLabel = new JLabel("<html><body style='width: 250 px'>" + story);
+//			
+//			titleLabel.setFont(titleFont);
+//			storyLabel.setFont(storyFont);
+//			
+//			this.add(famPic, BorderLayout.NORTH);
+//			this.add(titleLabel, BorderLayout.CENTER);
+//			this.add(storyLabel, BorderLayout.SOUTH);
+//		}
+//	}
 
 	public HomePanel() {
 		super();
