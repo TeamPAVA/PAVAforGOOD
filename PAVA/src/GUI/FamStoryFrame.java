@@ -91,11 +91,14 @@ public class FamStoryFrame extends JFrame {
 				try {
 					FileWriter w = new FileWriter("famStoriesDatabase.csv", true);
 					StringBuilder sb = new StringBuilder();
-					if (!titleBox.getText().isEmpty() && !storyBox.getText().isEmpty() && !imageFile.exists()) {
+					if (!titleBox.getText().isEmpty() && !storyBox.getText().isEmpty()) {
+						//sb.append(nextNum);
+						sb.append(',');
 						sb.append(titleBox.getText());
 						sb.append(',');
 						sb.append(storyBox.getText());
 						sb.append(',');
+						sb.append("famStories/");
 						sb.append(imageFile.getName());
 						sb.append('\n');
 						w.write(sb.toString());
