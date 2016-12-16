@@ -30,7 +30,7 @@ public class Tests {
 	}
 	
 	public double donorPanelTestFramework(double testVal) {
-		DonorPanel tester = new DonorPanel("admin2"); // MyClass is tested
+		DonorPanel tester = new DonorPanel("admin"); // MyClass is tested
 		tester.recipientData(testVal);
 		double total = 0;
 		
@@ -39,7 +39,7 @@ public class Tests {
 	        String database;
 	        while((database = fileScanner.readLine()) != null){
 	           String[] user = database.split(",");
-	        	   if (user[0].equals("admin2")) {
+	        	   if (user[0].equals("admin")) {
 	        		   total = Double.parseDouble(user[2]);
 		            }
 	        }
