@@ -3,6 +3,8 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,16 +30,31 @@ public class RecipientOptionsPanel extends JPanel {
 		
 		
 		setBackground(Color.GRAY);
-		setLayout(new GridLayout (3,2));
+		setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
 		JLabel recName = new JLabel("Recipient Name: ");
 		recName.setFont(recName.getFont().deriveFont(25.0F));
-		add(recName);
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		add(recName, c);
+		
 		JLabel name = new JLabel(username);
-		add(name);
+		
+		c.gridx = 1;
+		c.gridy = 0;
+		add(name, c);
+		
+		
 		
 		JLabel currentRemBal = new JLabel("Current Remaining Balance On Card: ");
 		currentRemBal.setFont(recName.getFont().deriveFont(20.0F));
-		add(currentRemBal);
+		
+		c.gridx = 0;
+		c.gridy = 1;
+		add(currentRemBal, c);
+		
 		double total = 0;
 				 try {
 				    	BufferedReader fileScanner = new BufferedReader(new FileReader(users));	
@@ -47,7 +64,9 @@ public class RecipientOptionsPanel extends JPanel {
 				        	   if (user[0].equals(username)) {
 				        		   total = Double.parseDouble(user[2]);
 				        		   JLabel tot = new JLabel("$" + user[2]);
-				        		   add(tot);
+				        		   c.gridx = 1;
+				        		   c.gridy = 1;
+				        		   add(tot, c);
 					            }
 				        }
 				        fileScanner.close();
@@ -58,12 +77,34 @@ public class RecipientOptionsPanel extends JPanel {
 				 
 		 JLabel totalRecieved = new JLabel("Total Recieved To Date: ");
 		 totalRecieved.setFont(recName.getFont().deriveFont(20.0F));
-		 add(totalRecieved);	
+		 
+		 c.gridx = 0;
+		 c.gridy = 2;
+		 add(totalRecieved, c);	
 		 
 		 
 		 JLabel totalView = new JLabel("$" + total);
-		 add(totalView);
 		 
+		 c.gridx = 1;
+		 c.gridy = 2;
+		 add(totalView,c);
+		 
+		 
+		 JButton addFamStory = new JButton("Add Family Story");
+		 addFamStory.setSize(100,100);
+		 addFamStory.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					FamStoryFrame myFamStoryFrame = new FamStoryFrame();
+					myFamStoryFrame.setVisible(true);
+				}
+				
+			});
+		 
+		 
+		 c.gridx = 0;
+		 c.gridy = 3;
+		 add(addFamStory, c);
 				
 				 
 		
