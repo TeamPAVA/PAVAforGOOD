@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,6 +25,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+//import com.opencsv.CSVReader;
+//import com.opencsv.CSVWriter;
 
 /**
  * The Panel class for the Donor Panel
@@ -43,6 +47,7 @@ public class DonorPanel extends JPanel {
 	String[] users;
 	File donors;
 	FileWriter w; 
+	List<String[]> csvBody;
 	StringBuilder sb = new StringBuilder();
 
 	public DonorPanel(String username) {
@@ -104,7 +109,14 @@ public class DonorPanel extends JPanel {
 				panel.add(zip);
 
 
-
+			
+//				try {
+//					CSVReader reader = new CSVReader(new FileReader("donorDatabase.csv"),',');
+//					csvBody = reader.readAll();
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
 				String database;
 				
 				try {
@@ -235,80 +247,46 @@ public class DonorPanel extends JPanel {
 				//parse through recipieient and add amount per rec to their total amount
 				try {
 			    	BufferedReader fileScanner = new BufferedReader(new FileReader(recipData));	
-			        String database = null;
-			        String line = "";
+			    	BufferedReader donorScanner = new BufferedReader(new FileReader(donors));
+			        String database = "";
+			        String line;
+			        String donorData;
+			        String donorInfo = "";
 			        
-			        ////////////////////////////////////////////////////
 			        while((line = fileScanner.readLine()) != null) {
 			        	String[] users = line.split(",");
-			        	if(database == null) {
 			        		double amt = Double.parseDouble(users[2]) + amountPerRec;
-			        		database = users[0] + "," + users[1] + "," +  amt;
-			        	} else {
-			        		double amt = Double.parseDouble(users[2]) + amountPerRec;
-			        		database = database + users[0] + "," + users[1] + "," +amt;
-			        	}
-			        	database = database + "\n";
+			        		database = users[0] + "," + users[1] + "," +  amt;			        	
+			        		database = database + "\n";
+			        }
+			        while((donorData = donorScanner.readLine()) != null) {
+			        	String[] donors = donorData.split(",");
+			        		double donation = Double.parseDouble(donors[2]);
+				        	if (donors[0].equals(username)) {
+				        		donation += donAmount;
+				        		donorInfo = donorInfo + donors[0] + "," + donors[1] + "," +  donation + "," + donors[3] + "," +  donors[4] 
+				        				+ "," +  donors[5] + "," + donors[6] + "," +  donors[7];
+				        	} else {
+				        		donorInfo = donorInfo + donors[0] + "," + donors[1] + "," +  donation + "," + donors[3] + "," +  donors[4] 
+			        				+ "," +  donors[5] + "," + donors[6] + "," +  donors[7];
+				        	}
+			        	donorInfo = donorInfo + "\n";
 			        }
 			        
-			        
 			        FileWriter writeRecipient = new FileWriter("recipientDatabase.csv", false);
+			        FileWriter donorWriter = new FileWriter("donorDatabase.csv", false);
 				
 					writeRecipient.write(database);		
 					writeRecipient.close();
+					donorWriter.write(donorInfo);		
+					donorWriter.close();
 			    
 			        fileScanner.close();
-			        ///////////////////////////////////////////////////
+			        donorScanner.close();
 			   } catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-				
-				
-				
-				
-				
-				
-				
-				
-						
-				
-				if(hasBeenPushed == true) {
-					users[3] = name.getText();
-					users[4] = cNum.getText();
-					users[5] = expDate.getText();
-					users[6] = cvc.getText();
-					users[7] = zip.getText();
-					
-					sb.append(users[0]);
-					sb.append(',');
-					sb.append(users[1]);
-					sb.append(',');
-					sb.append(users[2]);
-					sb.append(',');
-					sb.append(users[3]);
-					sb.append(',');
-					sb.append(users[4]);
-					sb.append(',');
-					sb.append(users[5]);
-					sb.append(',');
-					sb.append(users[6]);
-					sb.append(',');
-					sb.append(users[7]);
-					sb.append(',');
-					
-					sb.append('\n');
-					try {
-						w.write(sb.toString());
-						w.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} 
-			
-				
-
+			   }		
 				JOptionPane.showMessageDialog(initial2, "Thank you for your donation!");
 			}
 		});
