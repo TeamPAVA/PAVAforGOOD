@@ -30,6 +30,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -142,11 +143,9 @@ public class LoginFrame extends JFrame {
 		
 		login.addActionListener(new ActionListener() {
 
-
-
-
 			public void actionPerformed(ActionEvent e) {
 			    try {
+			    	FileWriter writeRecipient = new FileWriter(users, true);
 			    	BufferedReader fileScanner = new BufferedReader(new FileReader(users));	
 			        String database;
 			        while((database = fileScanner.readLine()) != null){
@@ -191,7 +190,7 @@ public class LoginFrame extends JFrame {
 		    public void actionPerformed(ActionEvent e) {
 		      JOptionPane.showMessageDialog(null,"PAVAP is an absolute dream team. I first met PAVAP, or THE PAVAP as I call them, "
 		       + '\n' + "at an audition for 2001: A Space Odyssey. Yes, you read that correctly, "
-		        + '\n' + "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
+		       + '\n' + "their brief stint in cinema brought you the cinematic masterpiece of the ages. ("
 		       + '\n' + "I unfortunately didn’t get the part, but I digress.) PAVAP moved onto to develop the "
 		       + '\n' + "first iPhone prototype before Steve Jobs “acquired” it (His words, not mine.) PAVAP "
 		       + '\n' + "believes in clean energy and has contributed miles of code to Tesla’s autopilot "

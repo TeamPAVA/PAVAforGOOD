@@ -94,9 +94,7 @@ public class SignupFrame extends JFrame {
 						writeRecipient.write(info.toString());		
 						writeRecipient.close();
 					}
-
 				}
-
 			} catch (FileNotFoundException e1) {
 								//if cant find file, do this
 			} catch (IOException e1) {
@@ -113,6 +111,4 @@ public class SignupFrame extends JFrame {
 		
 	});
 }
-	
-
 }

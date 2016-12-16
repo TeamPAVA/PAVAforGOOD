@@ -26,8 +26,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
+//import com.opencsv.CSVReader;
+//import com.opencsv.CSVWriter;
 
 /**
  * The Panel class for the Donor Panel
@@ -110,13 +110,13 @@ public class DonorPanel extends JPanel {
 
 
 			
-				try {
-					CSVReader reader = new CSVReader(new FileReader("donorDatabase.csv"),',');
-					csvBody = reader.readAll();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+//				try {
+//					CSVReader reader = new CSVReader(new FileReader("donorDatabase.csv"),',');
+//					csvBody = reader.readAll();
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
 				String database;
 				
 				try {
